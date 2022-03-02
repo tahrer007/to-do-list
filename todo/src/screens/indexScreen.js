@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-//import BlogContext from "../context/BlogContext";
+import { BlogContext } from "../context/BlogContext";
 
 const IndexScreen = () => {
-  //const value = useContext(BlogContext);
+  const value = useContext(BlogContext);
+  console.log(value);
   return (
     <View style={styles.container}>
-      <Text>index screen </Text>
+      <Text>{value} </Text>
     </View>
   );
 };
