@@ -4,6 +4,8 @@ import { react } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import IndexScreen from "./src/screens/indexScreen";
+
 
 
 const Stack = createStackNavigator();
@@ -11,14 +13,13 @@ const Stack = createStackNavigator();
 const app = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName ="Search">
+      <Stack.Navigator initialRouteName ="index">
         <Stack.Screen
-          name="Search"
-          component={SearchScreen}
-          options={{ title: "Search restaurant " }}
+          name="index"
+          component={IndexScreen}
+          options={{ title: "to-do app " }}
         />
         
-        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
