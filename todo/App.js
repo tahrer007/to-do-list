@@ -32,8 +32,9 @@ const blogReducer = (state, action) => {
 
 const app = () => {
   const [BlogPosts, dispatch] = useReducer(blogReducer, []);
-  const addBlogPost = (post) => {
+  const addBlogPost = (post, callBack) => {
     dispatch({ type: "add_blogPost", payLoad: post });
+    callBack;
   };
   const deleteBlogPost = (id) => {
     console.log(id);
