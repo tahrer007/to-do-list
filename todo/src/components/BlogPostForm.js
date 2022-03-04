@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
-const BlogPostForm = ({ onSubmit, intialValue }) => {
-  console.log(intialValue);
-  let inTitle = "";
-  let inContent = "";
-  if (intialValue) {
-    inTitle = intialValue.title;
-    inContent = intialValue.content;
-  }
-
-  const [title, setTitle] = useState(inTitle);
-  const [content, setContent] = useState(inContent);
+const BlogPostForm = ({ onSubmit, intialValues }) => {
+  const [title, setTitle] = useState(intialValues.title);
+  const [content, setContent] = useState(intialValues.content);
 
   return (
     <View>
@@ -51,11 +43,11 @@ const styles = StyleSheet.create({
   },
 });
 //not working
-/*BlogPostForm.defaultProps = {
+BlogPostForm.defaultProps = {
   intialValues: {
-    title: "sds",
-    content: "sds",
+    title: "",
+    content: "",
   },
-};*/
+};
 
 export default BlogPostForm;

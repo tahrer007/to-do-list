@@ -26,15 +26,10 @@ const blogReducer = (state, action) => {
     case "delete_blogPost":
       return state.filter((blogPost) => blogPost.id !== action.payLoad);
 
-    case "add_blogPost":
-      return [
-        ...state,
-        {
-          id: Math.floor(Math.random() * 999999),
-          title: action.payLoad.title,
-          content: action.payLoad.content,
-        },
-      ];
+    case "edit_blogPost":
+      return state.map((post) =>
+        post.id === action.payLoad.id ? action.payLoad : post
+      );
 
     default:
       return state;
@@ -48,17 +43,17 @@ const app = () => {
     callBack();
   };
   const editBlogPost = (post, callBack) => {
+    console.log(post);
     dispatch({ type: "edit_blogPost", payLoad: post });
-    callBack;
+    callBack();
   };
   const deleteBlogPost = (id) => {
-    console.log(id);
     dispatch({ type: "delete_blogPost", payLoad: id });
   };
 
   return (
     <BlogContext.Provider
-      value={{ data: BlogPosts, addBlogPost, deleteBlogPost }}
+      value={{ data: BlogPosts, addBlogPost, deleteBlogPost, editBlogPost }}
     >
       <NavigationContainer>
         <Stack.Navigator initialRouteName="index">
