@@ -10,7 +10,16 @@ const Stack = createStackNavigator();
 const blogReducer = (state, action) => {
   switch (action.type) {
     case "add_blogPost":
-      return [...state, { title: ` blog post # ${state.length + 1}` }];
+      return [
+        ...state,
+        {
+          id: Math.floor(Math.random() * 999999),
+          title: ` blog post # ${state.length + 1}`,
+        },
+      ];
+
+    case "delete_blogPost":
+      return state.filter((blogPost) => blogPost.id !== action.payLoad);
 
     default:
       return state;
@@ -22,9 +31,15 @@ const app = () => {
   const addBlogPost = () => {
     dispatch({ type: "add_blogPost" });
   };
+  const deleteBlogPost = (id) => {
+    console.log(id);
+    dispatch({ type: "delete_blogPost", payLoad: id });
+  };
 
   return (
-    <BlogContext.Provider value={{ data: BlogPosts, addBlogPost }}>
+    <BlogContext.Provider
+      value={{ data: BlogPosts, addBlogPost, deleteBlogPost }}
+    >
       <NavigationContainer>
         <Stack.Navigator initialRouteName="index">
           <Stack.Screen

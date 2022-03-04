@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, FlatList, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import { BlogContext } from "../context/BlogContext";
+import { FontAwesome } from "@expo/vector-icons";
 
 const IndexScreen = () => {
-  const { data, addBlogPost } = useContext(BlogContext);
-  console.log(data);
+  const { data, addBlogPost, deleteBlogPost } = useContext(BlogContext);
 
   return (
     <View style={styles.container}>
@@ -14,7 +21,19 @@ const IndexScreen = () => {
         data={data}
         keyExtractor={(item) => item.title}
         renderItem={({ item }) => {
-          return <Text>{item.title}</Text>;
+          return (
+            <View style={styles.row}>
+              <Text style={styles.title}>{item.title}</Text>
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <FontAwesome
+                  style={styles.icon}
+                  name="trash"
+                  size={24}
+                  color="black"
+                />
+              </TouchableOpacity>
+            </View>
+          );
         }}
       />
     </View>
@@ -24,6 +43,21 @@ const IndexScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  row: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    borderTopWidth: 1,
+    borderColor: "grey",
+  },
+  icon: {
+    fontSize: 24,
+  },
+  title: {
+    fontSize: 24,
   },
 });
 export default IndexScreen;
