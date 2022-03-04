@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import IndexScreen from "./src/screens/indexScreen";
 import { BlogContext } from "./src/context/BlogContext";
+import ShowScreen from "./src/screens/showScreen";
 
 const Stack = createStackNavigator();
 const blogReducer = (state, action) => {
@@ -46,6 +47,11 @@ const app = () => {
             name="index"
             component={IndexScreen}
             options={{ title: "to-do app " }}
+          />
+          <Stack.Screen
+            name="show"
+            component={ShowScreen}
+            options={{ title: "details " }}
           />
         </Stack.Navigator>
       </NavigationContainer>
