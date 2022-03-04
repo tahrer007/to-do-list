@@ -17,7 +17,8 @@ const blogReducer = (state, action) => {
         ...state,
         {
           id: Math.floor(Math.random() * 999999),
-          title: ` blog post # ${state.length + 1}`,
+          title: action.payLoad.title,
+          content: action.payLoad.content,
         },
       ];
 
@@ -31,8 +32,8 @@ const blogReducer = (state, action) => {
 
 const app = () => {
   const [BlogPosts, dispatch] = useReducer(blogReducer, []);
-  const addBlogPost = () => {
-    dispatch({ type: "add_blogPost" });
+  const addBlogPost = (post) => {
+    dispatch({ type: "add_blogPost", payLoad: post });
   };
   const deleteBlogPost = (id) => {
     console.log(id);
