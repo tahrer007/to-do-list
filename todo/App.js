@@ -1,12 +1,13 @@
 import "react-native-gesture-handler";
 import React, { useReducer } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import IndexScreen from "./src/screens/indexScreen";
 import { BlogContext } from "./src/context/BlogContext";
 import ShowScreen from "./src/screens/showScreen";
 import CreateScreen from "./src/screens/CreateScreen";
+import { FontAwesome } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 const blogReducer = (state, action) => {
@@ -47,7 +48,14 @@ const app = () => {
           <Stack.Screen
             name="index"
             component={IndexScreen}
-            options={{ title: "to-do app " }}
+            options={({ navigation }) => ({
+              title: "to-do app ",
+              headerRight: () => (
+                <TouchableOpacity onPress={() => navigation.navigate("create")}>
+                  <FontAwesome name="plus" size={24} color="black" />
+                </TouchableOpacity>
+              ),
+            })}
           />
           <Stack.Screen
             name="create"
