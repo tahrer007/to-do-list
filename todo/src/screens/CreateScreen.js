@@ -24,7 +24,7 @@ const CreateScreen = ({ navigation }) => {
       <Button
         title="add blog post"
         onPress={() => {
-          addBlogPost({ title: title, content: content }, () => {
+          addBlogPost({ title, content }, () => {
             navigation.goBack();
           });
         }}

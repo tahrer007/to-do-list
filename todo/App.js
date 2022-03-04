@@ -7,6 +7,7 @@ import IndexScreen from "./src/screens/indexScreen";
 import { BlogContext } from "./src/context/BlogContext";
 import ShowScreen from "./src/screens/showScreen";
 import CreateScreen from "./src/screens/CreateScreen";
+import EditScreen from "./src/screens/editScreen";
 import { FontAwesome } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
