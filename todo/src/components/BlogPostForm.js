@@ -12,11 +12,16 @@ const BlogPostForm = ({ onSubmit, intialValues }) => {
         style={styles.input}
         value={title}
         onChangeText={(text) => setTitle(text)}
-      />
+        autoCapitalize={false}
+        autoCorrect={false}
+        autoComplete={false}      />
       <Text style={styles.label}>Enter Content:</Text>
       <TextInput
         style={styles.input}
         value={content}
+        autoCapitalize={false}
+        autoCorrect={false}
+        autoComplete={false}
         onChangeText={(text) => setContent(text)}
       />
       <Button
